@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Clone the repository from GitHub
-                git url: 'https://github.com/kdradgzll0/flask-hello.git'
+                git url: 'https://github.com/<username>/<repository>.git'
             }
         }
 
