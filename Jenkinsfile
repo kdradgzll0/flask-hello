@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                // Clone the repository from GitHub
-                git url: 'https://github.com/<username>/<repository>.git'
+                // GitHub repository URL'si ve branch: 'main'
+                git branch: 'main', url: 'https://github.com/kdradgzll0/flask-hello.git'
             }
         }
 
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 // Run code quality analysis using SonarQube
                 withSonarQubeEnv('SonarQube') {
-                    sh 'sonar-scanner -Dsonar.projectKey=flask-api -Dsonar.sources=.'
+                    sh 'sonar-scanner -Dsonar.projectKey=flask-hello -Dsonar.sources=.'
                 }
             }
         }
@@ -40,14 +40,14 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Build the Docker image for the application
-                sh 'docker build -t flask-api .'
+                sh 'docker build -t flask-hello .'
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
                 // Deploy the application to Kubernetes using Helm
-                sh 'helm upgrade --install flask-api ./helm-chart --set image.tag=latest'
+                sh 'helm upgrade --install flask-hello ./helm-chart --set image.tag=latest'
             }
         }
     }
@@ -59,3 +59,4 @@ pipeline {
         }
     }
 }
+
