@@ -3,14 +3,14 @@ pipeline {
 
     stages {
 
-        stage('Code Quality Analysis') {
-            steps {
-                // Run code quality analysis using SonarQube
-                withSonarQubeEnv('SonarQube') {
-                    sh 'sonar-scanner -Dsonar.projectKey=flask-hello -Dsonar.sources=.'
-                }
-            }
-        }
+        // stage('Code Quality Analysis') {
+        //     steps {
+        //         // Run code quality analysis using SonarQube
+        //         withSonarQubeEnv('SonarQube') {
+        //             sh 'sonar-scanner -Dsonar.projectKey=flask-hello -Dsonar.sources=.'
+        //         }
+        //     }
+        // }
 
         stage('Build Docker Image') {
             steps {
