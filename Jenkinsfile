@@ -6,9 +6,7 @@ pipeline {
         stage('Code Quality Analysis') {
             steps {
                 // Run code quality analysis using SonarQube
-                withSonarQubeEnv('SonarQube') {
-                    sh 'sonar-scanner -Dsonar.projectKey=flask-hello -Dsonar.sources=.'
-                }
+                sh 'sonar-scanner -Dsonar.projectKey=flask-hello -Dsonar.sources=.'
             }
         }
 
