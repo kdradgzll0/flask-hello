@@ -15,16 +15,23 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Build the Docker image for the application
-                sh 'docker build -t flask-hello .'
+                sh 'docker build -t flask-hello:latest .'
             }
         }
 
-            stage('Deploy to Kubernetes') {
+        stage('Push Docker Image') {
             steps {
-                // Deploy the application to Kubernetes using Helm
-                sh 'helm upgrade --install flask-hello ./helm-chart --set image.tag=latest'
+                // Build the Docker image for the application
+                sh 'docker push flask-hello:latest'
             }
         }
+
+        //     stage('Deploy to Kubernetes') {
+        //     steps {
+        //         // Deploy the application to Kubernetes using Helm
+        //         sh 'helm upgrade --install flask-hello ./helm-chart --set image.tag=latest'
+        //     }
+        // }
     }
 
     post {
