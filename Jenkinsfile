@@ -15,14 +15,14 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Build the Docker image for the application
-                sh 'docker build -t flask-hello:latest .'
+                sh 'docker build -t kdradgzl/flask-hello:latest .'
             }
         }
 
         stage('Push Docker Image') {
             steps {
                 // Build the Docker image for the application
-                sh 'docker push flask-hello:latest'
+                sh 'docker push kdradgzl/flask-hello:latest'
             }
         }
 
